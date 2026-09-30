@@ -1,0 +1,402 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   DECLARAÇÃO DAS VARIÁVEIS (DESIGN SYSTEM)
+   ========================================================================== */
+:root {
+  /* --- 1. PALETA DE CORES (8 Cores) --- */
+  --cor-primaria: rgb(23, 51, 41);        /* Verde escuro para texto principal */
+  --cor-secundaria: rgb(125, 194, 125);   /* Verde claro para fundos de títulos */
+  --cor-destaque: rgb(75, 150, 100);      /* Verde médio para detalhes */
+  --cor-fundo: whitesmoke;                /* Fundo neutro claro da página */
+  --cor-superficie: white;                /* Fundo branco para os artigos */
+  --cor-texto-principal: rgb(23, 51, 41);  /* Cor do texto de leitura */
+  --cor-texto-suave: rgb(80, 80, 80);     /* Cor de texto suave para o rodapé */
+  --cor-borda: rgb(23, 51, 41);           /* Cor de borda dos títulos */
+
+  /* --- 2. ESCALA TIPOGRÁFICA (5 Tamanhos) --- */
+  --fonte-principal: Verdana, Geneva, Tahoma, sans-serif;
+  --tamanho-fonte-p: 0.75rem;             /* 12px - Rodapé */
+  --tamanho-fonte-m: 1.0rem;              /* 16px - Parágrafos e links */
+  --tamanho-fonte-g: 1.2rem;              /* 19.2px - Títulos H3 */
+  --tamanho-fonte-gg: 1.8rem;             /* 28.8px - Títulos H2 */
+  --tamanho-fonte-max: 2.5rem;            /* 40px - Título principal H1 */
+
+  /* --- 3. ESCALA DE ESPAÇAMENTOS (5 Tamanhos) --- */
+  --espaco-pp: 0.5rem;                    /* 8px */
+  --espaco-p: 1.0rem;                     /* 16px */
+  --espaco-m: 1.5rem;                     /* 24px */
+  --espaco-g: 2.0rem;                     /* 32px */
+  --espaco-gg: 3.0rem;                    /* 48px */
+}
+
+/* ==========================================================================
+   ESTILOS GERAIS & RESET
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-principal);
+  padding: var(--espaco-p);
+}
+
+header {
+  margin-bottom: var(--espaco-m);
+}
+
+h1 {
+  border: 3px solid var(--cor-borda);
+  background: var(--cor-secundaria);
+  text-align: center;
+  font-size: var(--tamanho-fonte-max);
+  padding: var(--espaco-pp);
+  margin-bottom: var(--espaco-m);
+}
+
+h2 {
+  background: var(--cor-secundaria);
+  font-size: var(--tamanho-fonte-gg);
+  margin-bottom: var(--espaco-p);
+  padding: var(--espaco-pp);
+}
+
+h3 {
+  font-size: var(--tamanho-fonte-g);
+  margin-top: var(--espaco-m);
+  margin-bottom: var(--espaco-p);
+  color: var(--cor-destaque);
+}
+
+p, li, label {
+  font-size: var(--tamanho-fonte-m);
+  margin-bottom: var(--espaco-p);
+}
+
+ul, ol {
+  margin-left: var(--espaco-g);
+  margin-bottom: var(--espaco-p);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   MÓDULO FLEXBOX: NAVEGAÇÃO & HAMBÚRGUER
+   ========================================================================== */
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-hamburguer {
+  display: block;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cor-primaria);
+  margin-bottom: var(--espaco-pp);
+}
+
+nav .menu-links {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--espaco-pp);
+}
+
+/* Exibe os links quando o JavaScript adiciona a classe ativo */
+nav .menu-links.ativo {
+  display: flex;
+}
+
+nav a {
+  font-size: var(--tamanho-fonte-m);
+  color: var(--cor-primaria);
+  text-decoration: underline;
+  padding: var(--espaco-pp);
+}
+
+/* ==========================================================================
+   MÓDULO FLEXBOX: FORMULÁRIOS
+   ========================================================================== */
+form fieldset {
+  border: 1px solid var(--cor-borda);
+  padding: var(--espaco-p);
+  margin-bottom: var(--espaco-m);
+}
+
+form fieldset p {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-pp);
+}
+
+/* ==========================================================================
+   SISTEMA DE CSS GRID DE 12 COLUNAS (MOBILE FIRST)
+   ========================================================================== */
+main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-m);
+}
+
+section, article {
+  grid-column: span 12;
+  background-color: var(--cor-superficie);
+  padding: var(--espaco-p);
+  margin-bottom: var(--espaco-p);
+}
+
+/* ==========================================================================
+   MÓDULO FLEXBOX: RODAPÉ
+   ========================================================================== */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--tamanho-fonte-p);
+  color: var(--cor-texto-suave);
+  margin-top: var(--espaco-gg);
+}
+
+/* ==========================================================================
+   OS 5 PONTOS DE QUEBRA RESPONSIVOS (MEDIA QUERIES)
+   ========================================================================== */
+
+/* 1. Mobile XL (≥ 480px) */
+@media (min-width: 480px) {
+  body {
+    padding: var(--espaco-m);
+  }
+}
+
+/* 2. Tablets (≥ 768px) */
+@media (min-width: 768px) {
+  .btn-hamburguer {
+    display: none;
+  }
+
+  nav .menu-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--espaco-p);
+  }
+
+  section#projetos {
+    grid-column: span 7;
+  }
+  section#contato {
+    grid-column: span 5;
+  }
+}
+
+/* 3. Laptops (≥ 1024px) */
+@media (min-width: 1024px) {
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  section#sobre {
+    grid-column: span 6;
+  }
+  section#projetos {
+    grid-column: span 6;
+  }
+  section#contato {
+    grid-column: span 12;
+  }
+}
+
+/* 4. Desktops Padrão (≥ 1280px) */
+@media (min-width: 1280px) {
+  main {
+    max-width: 1200px;
+  }
+  section#sobre {
+    grid-column: span 4;
+  }
+  section#projetos {
+    grid-column: span 5;
+  }
+  section#contato {
+    grid-column: span 3;
+  }
+}
+
+/* 5. Ultra-wide (≥ 1440px) */
+@media (min-width: 1440px) {
+  main {
+    max-width: 1350px;
+  }
+  body {
+    padding: var(--espaco-gg);
+  }
+}
+
+
+/* ==========================================================================
+   ESTADOS INTERATIVOS & VALIDAÇÃO VISUAL
+   ========================================================================== */
+
+/* Botões - Estado Base */
+button, input[type="submit"] {
+  background-color: var(--cor-destaque);
+  color: var(--cor-superficie);
+  border: 2px solid var(--cor-destaque);
+  padding: var(--espaco-pp) var(--espaco-p);
+  font-size: var(--tamanho-fonte-m);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, opacity 0.3s ease;
+}
+
+/* Pseudo-classes para Botões */
+button:hover, input[type="submit"]:hover {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+}
+
+button:focus, input[type="submit"]:focus {
+  outline: 3px solid var(--cor-secundaria);
+  outline-offset: 2px;
+}
+
+button:active, input[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+button:disabled, input[type="submit"]:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Validação Visual dos Campos do Formulário */
+form input:focus, form select:focus {
+  outline: 2px solid var(--cor-destaque);
+  border-color: var(--cor-destaque);
+}
+
+
+/* ==========================================================================
+   COMPONENTES DE FEEDBACK (BADGES, ALERTAS E TOASTS)
+   ========================================================================== */
+
+/* 1. BADGES (Etiquetas) */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  font-size: var(--tamanho-fonte-p);
+  font-weight: bold;
+  border-radius: 12px;
+  color: var(--cor-superficie);
+}
+
+.badge-sucesso {
+  background-color: #2e7d32;
+}
+
+.badge-alerta {
+  background-color: #e65100;
+}
+
+/* 2. ALERTAS (Caixas de Mensagem) */
+.alerta {
+  padding: var(--espaco-p);
+  border-radius: 4px;
+  margin-top: var(--espaco-p);
+  margin-bottom: var(--espaco-p);
+  font-size: var(--tamanho-fonte-m);
+}
+
+.alerta-info {
+  background-color: #e8f5e9;
+  border-left: 5px solid var(--cor-destaque);
+  color: var(--cor-primaria);
+}
+
+/* 3. TOAST (Notificação Flutuante) */
+.toast {
+  position: fixed;
+  bottom: var(--espaco-g);
+  right: var(--espaco-g);
+  padding: var(--espaco-p) var(--espaco-m);
+  border-radius: 6px;
+  color: var(--cor-superficie);
+  font-size: var(--tamanho-fonte-m);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.toast-sucesso {
+  background-color: var(--cor-primaria);
+  border-left: 4px solid var(--cor-secundaria);
+}
+
+/* Estados de validação dos campos */
+
+form input,
+form textarea {
+  display: block;
+  width: 100%;
+  padding: var(--espaco-pp);
+  margin-bottom: var(--espaco-pp);
+  border: 2px solid var(--cor-borda);
+  border-radius: 4px;
+  font-family: var(--fonte-principal);
+  font-size: var(--tamanho-fonte-m);
+}
+
+/* Campo preenchido corretamente */
+form .sucesso {
+  border-color: #2e7d32;
+  background-color: #f1f8e9;
+}
+
+/* Campo com erro */
+form .erro {
+  border-color: #c62828;
+  background-color: #ffebee;
+}
+
+/* Mensagens abaixo dos campos */
+.mensagem-campo {
+  display: block;
+  margin-bottom: var(--espaco-p);
+  font-size: var(--tamanho-fonte-p);
+}
+
+/* Mensagem de erro no envio */
+.alerta-erro {
+  color: #c62828;
+  background-color: #ffebee;
+  padding: var(--espaco-p);
+  border-left: 5px solid #c62828;
+  margin-top: var(--espaco-p);
+}
+
+#lista-cadastros {
+  margin-top: var(--espaco-m);
+}
+
+#lista-cadastros article {
+  border: 1px solid var(--cor-borda);
+  border-radius: 4px;
+  margin-top: var(--espaco-p);
+  background-color: var(--cor-superficie);
+}

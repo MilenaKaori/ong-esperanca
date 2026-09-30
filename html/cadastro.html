@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style4.css">
+   <title>Cadastro de Voluntários - ONG Esperança</title>
+</head>
+
+<body>
+
+   <header>
+      <h1>Cadastro de Voluntários</h1>
+
+      <nav>
+         <button class="btn-hamburguer" aria-label="Abrir Menu">&#9776;</button>
+         <div class="menu-links">
+            <a href="index.html">Início</a>
+            <a href="projetos.html">Projetos</a>
+         </div>
+      </nav>
+   </header>
+
+   <main>
+
+      <section>
+         <h2>Faça parte da nossa equipe</h2>
+
+         <p>
+            Preencha o formulário abaixo para demonstrar seu interesse
+            em participar das ações da ONG Esperança.
+         </p>
+
+         <form>
+
+            <fieldset>
+               <legend>Dados pessoais</legend>
+
+               <p>
+                  <label for="nome">Nome completo:</label>
+                  <input type="text" id="nome" name="nome" required>
+               </p>
+
+               <p>
+                  <label for="nascimento">Data de nascimento:</label>
+                  <input type="date" id="nascimento" name="nascimento" required>
+               </p>
+
+               <p>
+                  <label for="email">E-mail:</label>
+                  <input type="email" id="email" name="email" required>
+               </p>
+
+               <p>
+                  <label for="cpf">CPF:</label>
+                  <input type="text" id="cpf" name="cpf"
+                         pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+                         placeholder="000.000.000-00"
+                         required>
+               </p>
+
+               <p>
+                  <label for="telefone">Telefone:</label>
+                  <input type="tel" id="telefone" name="telefone"
+                         pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+                         placeholder="(00) 00000-0000"
+                         required>
+               </p>
+            </fieldset>
+
+            <fieldset>
+               <legend>Endereço</legend>
+
+               <p>
+                  <label for="endereco">Endereço:</label>
+                  <input type="text" id="endereco" name="endereco" required>
+               </p>
+
+               <p>
+                  <label for="cidade">Cidade:</label>
+                  <input type="text" id="cidade" name="cidade" required>
+               </p>
+
+               <p>
+                  <label for="estado">Estado:</label>
+                  <input type="text" id="estado" name="estado" required>
+               </p>
+
+               <p>
+                  <label for="cep">CEP:</label>
+                  <input type="text" id="cep" name="cep"
+                         pattern="[0-9]{5}-[0-9]{3}"
+                         placeholder="00000-000"
+                         required>
+               </p>
+            </fieldset>
+
+            <fieldset>
+               <legend>Voluntariado</legend>
+
+               <p>
+                  <label for="area">Área de interesse:</label>
+
+                  <select id="area" name="area" required>
+                     <option value="">Selecione</option>
+                     <option value="educacao">Educação</option>
+                     <option value="eventos">Eventos</option>
+                     <option value="arrecadacao">Arrecadação</option>
+                  </select>
+               </p>
+
+               <p>
+                  <label for="disponibilidade">Disponibilidade:</label>
+
+                  <select id="disponibilidade" name="disponibilidade" required>
+                     <option value="">Selecione</option>
+                     <option value="semana">Durante a semana</option>
+                     <option value="fim-semana">Finais de semana</option>
+                     <option value="ambos">Ambos</option>
+                  </select>
+               </p>
+
+            </fieldset>
+
+            <p>
+               <button type="submit">Enviar cadastro</button>
+            </p>
+
+         </form>
+
+      </section>
+
+      <!-- EXEMPLOS DE COMPONENTES DE FEEDBACK -->
+<section id="feedback-exemplos">
+   <h2>Componentes de Feedback e Estado</h2>
+
+   <!-- 1. BADGES (Etiquetas Semânticas) -->
+   <p>
+      Status da Inscrição: 
+      <span class="badge badge-sucesso">Inscrições Abertas</span>
+      <span class="badge badge-alerta">Vagas Limitadas</span>
+   </p>
+
+   <!-- 2. ALERTA (Caixa de Notificação) -->
+   <div class="alerta alerta-info">
+      <strong>Informação:</strong> O próximo encontro de voluntários será realizado no sábado às 14h.
+   </div>
+
+   <!-- 3. TOAST (Notificação Flutuante) -->
+   <div class="toast toast-sucesso">
+      Cadastro enviado com sucesso!
+   </div>
+
+
+</section>
+
+   </main>
+
+   <footer>
+      <p>ONG Esperança - Todos os direitos reservados.</p>
+   </footer>
+
+</body>
+
+</html>
